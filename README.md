@@ -41,3 +41,37 @@ forge script script/DeploymentSimpleNFT.s.sol --rpc-url http://127.0.0.1:8545 --
 ```
 
 
+gethインストール
+```
+sudo add-apt-repository -y ppa:ethereum/ethereum
+sudo apt update
+sudo apt install ethereum
+```
+
+gethをdevモードで起動
+```
+geth --datadir ./devchain --dev --http --http.api eth,net,web3,debug
+```
+
+.envのカギをもとにgethにアカウント作成
+```
+cd simpletoken
+./import_key_from_env.sh 
+```
+
+作ったアカウントに開発用自動生成アカウントから送金
+まずはgethコンソール起動
+```
+cd ..
+geth attach ipc:./devchain/geth.ipc
+```
+
+gethコンソール内で：
+```
+eth.sendTransaction({from: eth.accounts[0], to: "0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266", value: web3.toWei(1000, "ether")})
+```
+
+残高確認
+```
+web3.fromWei(eth.getBalance("0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266"), "ether")
+```
