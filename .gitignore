@@ -3,3 +3,4 @@ simpletoken/state.json
 devchain
 go-ethereum*
 v1.13.*
+password.txt
