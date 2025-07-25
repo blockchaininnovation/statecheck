@@ -48,14 +48,9 @@ sudo apt update
 sudo apt install ethereum
 ```
 
-gethをdevモードで起動
-```
-geth --datadir ./devchain --dev --http --http.api eth,net,web3,debug
-```
-
+gethを初期化
 ```
 geth --datadir ./devchain init genesis.json
-geth --datadir ./devchain --http --http.api eth,net,web3,debug,personal
 ```
 
 .envのカギをもとにgethにアカウント作成
@@ -64,23 +59,10 @@ cd simpletoken
 ./import_key_from_env.sh 
 ```
 
-作ったアカウントに開発用自動生成アカウントから送金
-まずはgethコンソール起動
-```
-cd ..
-geth attach ipc:./devchain/geth.ipc
+geth起動
 ```
 
-gethコンソール内で：
 ```
-eth.sendTransaction({from: eth.accounts[0], to: "0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266", value: web3.toWei(1000, "ether")})
-```
-
-残高確認
-```
-web3.fromWei(eth.getBalance("0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266"), "ether")
-```
-
 
 state読み込み・出力。gethが起動していたら止めてから実行：
 ```

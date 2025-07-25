@@ -1,0 +1,17 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[packages]
+plyvel = "*"
+rlp = "*"
+trie = "*"
+eth-utils = "*"
+eth-keys = "*"
+eth-hash = {extras = ["pycryptodome"]}
+eth-rlp = "*"
+py-evm = "*"
+
+[requires]
+python_version = "3.11"
