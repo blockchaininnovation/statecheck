@@ -53,6 +53,11 @@ gethをdevモードで起動
 geth --datadir ./devchain --dev --http --http.api eth,net,web3,debug
 ```
 
+```
+geth --datadir ./devchain init genesis.json
+geth --datadir ./devchain --http --http.api eth,net,web3,debug,personal
+```
+
 .envのカギをもとにgethにアカウント作成
 ```
 cd simpletoken
@@ -74,4 +79,13 @@ eth.sendTransaction({from: eth.accounts[0], to: "0xf39fd6e51aad88f6f4ce6ab882727
 残高確認
 ```
 web3.fromWei(eth.getBalance("0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266"), "ether")
+```
+
+
+state読み込み・出力。gethが起動していたら止めてから実行：
+```
+cd geth_state_reader
+
+pipenv install
+pipenv run python read_state.py
 ```
