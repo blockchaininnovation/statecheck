@@ -4,3 +4,4 @@ devchain
 go-ethereum*
 v1.13.*
 password.txt
+state.json
